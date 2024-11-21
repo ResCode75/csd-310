@@ -3,12 +3,25 @@
 import mysql.connector
 from mysql.connector import errorcode
 
+import dotenv
+from dotenv import dotenv_values
+
+
+#Created because raise_on_warnings was returning as a string not a bool. 
+def truetobool(string):
+    if string == "True":
+        return True
+
+
+secrets = dotenv_values(".env")
+
+
 config = {
-    "user": "movies_user",
-    "password": "*Jackfrost75",
-    "host": "127.0.0.1",
-    "database": "movies",
-    "raise_on_warnings": True
+    "user": secrets["USER"],
+    "password": secrets["PASSWORD"],
+    "host": secrets["HOST"],
+    "database":secrets["DATABASE"],
+    "raise_on_warnings": truetobool(secrets["RAISE_ON_WARNINGS"])
 }
 
 try:
