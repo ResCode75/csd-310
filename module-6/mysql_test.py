@@ -8,9 +8,11 @@ from dotenv import dotenv_values
 
 
 #Created because raise_on_warnings was returning as a string not a bool. 
-def truetobool(string):
+def stringtobool(string):
     if string == "True":
         return True
+    else:
+        return False
 
 
 secrets = dotenv_values(".env")
@@ -21,7 +23,7 @@ config = {
     "password": secrets["PASSWORD"],
     "host": secrets["HOST"],
     "database":secrets["DATABASE"],
-    "raise_on_warnings": truetobool(secrets["RAISE_ON_WARNINGS"])
+    "raise_on_warnings": stringtobool(secrets["RAISE_ON_WARNINGS"])
 }
 
 try:
