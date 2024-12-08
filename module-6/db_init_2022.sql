@@ -93,5 +93,3 @@ INSERT INTO film(film_name, film_releaseDate, film_runtime, film_director, studi
 INSERT INTO film(film_name, film_releaseDate, film_runtime, film_director, studio_id, genre_id) 
     VALUES('Get Out', '2017', '104', 'Jordan Peele', (SELECT studio_id FROM studio WHERE studio_name = 'Blumhouse Productions'),(SELECT genre_id FROM genre WHERE genre_name = 'Horror') );
     
-INSERT INTO film(film_name, film_releaseDate, film_runtime, film_director, studio_id, genre_id) 
-    VALUES('Five Nights At Freddys', '2023', '109', 'Emma Tammi', (SELECT studio_id FROM studio WHERE studio_name = 'Blumhouse Productions'),(SELECT genre_id FROM genre WHERE genre_name = 'Horror') )
