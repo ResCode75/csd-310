@@ -84,6 +84,7 @@ CREATE TABLE transactions (
         transaction_type VARCHAR(75) NOT NULL,
         transaction_amount INT NOT NULL,
         transaction_date DATE NOT NULL,
+        transaction_fee INT NOT NULL, 
         account_id INT NOT NULL,
         PRIMARY KEY (transaction_id),
         FOREIGN KEY (account_id) REFERENCES accounts(accounts_id)
@@ -131,12 +132,12 @@ INSERT INTO assets (assets_type, assets_worth, assets_desc, clients_id)
 --insert values into bills
 INSERT INTO bills (bills_amount, bills_date, services_id, clients_id)
     VALUES
-    (150, '2023-06-01', 1, 1),
-    (300, '2023-07-15', 2, 2),
-    (250, '2023-08-10', 3, 3),
-    (180, '2024-01-05', 4, 4),
-    (200, '2023-12-20', 5, 5),
-    (500, '2023-11-30', 6, 6);
+    (500, '2022-06-20', 6, 2),
+    (500, '2021-05-10', 6, 5),
+    (300, '2022-07-07', 5, 2),
+    (250, '2021-09-05', 3, 5),
+    (200, '2023-12-20', 2, 5),
+    (500, '2023-11-30', 1, 6);
 
 --insert values into transactions
 INSERT INTO transactions (transaction_type, transaction_amount, transaction_date, account_id)
@@ -147,3 +148,9 @@ INSERT INTO transactions (transaction_type, transaction_amount, transaction_date
     ('Deposit', 1200, '2024-01-10', 4),
     ('Withdrawal', 300, '2023-12-15', 5),
     ('Deposit', 1500, '2023-11-25', 6);
+
+SELECT COUNT(*) AS client_count 
+FROM clients 
+WHERE registration_date 
+BETWEEN '2023-02-20' AND '2023-08-20
+

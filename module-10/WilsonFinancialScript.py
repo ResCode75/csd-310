@@ -61,7 +61,7 @@ def show_assets(cursor, title):
         print("Client Name: {} {}\n Asset: {} Type: {} Worth: ${}".format(asset[0],asset[1],asset[2],asset[3], asset[4]))
 
 def show_transactions(cursor, title):
-    cursor.execute("SELECT clients_first_name AS fname,  clients_last_name AS lname, accounts_type AS account, transaction_type AS Type, transaction_amount AS amount, transaction_date AS date FROM transactions INNER JOIN accounts ON transactions.account_id = accounts.accounts_id INNER JOIN clients ON accounts.clients_id = clients.clients_id")
+    cursor.execute("SELECT clients_first_name AS fname,  clients_last_name AS lname, accounts_type AS account, transaction_type AS Type, transaction_amount AS amount, transaction_date, transaction_fee FROM transactions INNER JOIN accounts ON transactions.account_id = accounts.accounts_id INNER JOIN clients ON accounts.clients_id = clients.clients_id")
     transaction = cursor.fetchall()
     print("\n -- {} --".format(title))
 
@@ -74,7 +74,7 @@ def show_transactions(cursor, title):
         else:
             amount = "+${}".format((transaction[4]))
         
-        print("Client Name: {} {}\n Account: {}\n Transaction: {}\n Amount: {}\n Date: {}\n".format(transaction[0], transaction[1], transaction[2], transaction[3], amount, transaction[5]))
+        print("Client Name: {} {}\n Account: {}\n Transaction: {}\n Amount: {}\n Fee: ${}\n Date: {}\n".format(transaction[0], transaction[1], transaction[2], transaction[3], amount, transaction[6], transaction[5]))
     
 
 show_services(cursor, "SERVICES")
